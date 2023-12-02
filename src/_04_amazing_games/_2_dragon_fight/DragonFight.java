@@ -40,7 +40,7 @@ public class DragonFight {
 
 				// 3. Ask the player in a pop-up if they want to attack the dragon with a yell
 				// or a kick
-			String yellOrKick = JOptionPane.showInputDialog("do you want to yell or kick the dragon");
+			String yellOrKick = JOptionPane.showInputDialog("do you want to Yell or Kick the dragon");
 				// 4. If they typed in "yell":
 				if (yellOrKick.equals ("Yell")){
 					  // -- Find a random number between 0 and 10 and store it in playerAttack. Use
@@ -48,29 +48,34 @@ public class DragonFight {
 				playerattack = ran.nextInt(10);
 				}
 				// 5. If they typed in "kick":
-					if (yellOrKick.equals(Kick)){
+					if (yellOrKick.equals("Kick")){
 					  // -- Find a random number between 0 and 25 and store it in playerAttack.
-						playerattack = ran.nextInt(10);
+						playerattack = ran.nextInt(25);
 					}// 6. Subtract the player attack value from the dragon's health
-					playerattack -= dragonhealth;
+					dragonhealth -= playerattack;
 			// THE DRAGON RETALIATES
-
+						
 				// 7. Find a random number between 0 and 35 and store it in dragonAttack
-	
+						dragonattack = ran.nextInt(35);
 				// 8. Subtract the dragon attack value from the player's health
-
+						playerhealth -= dragonattack;
 			// ASSESS THE DAMAGE
 
 				// 9. If the player's health is less than or equal to 0, the game is over,
 				//    call the playerLost() method
-	
-			
+			if	(playerhealth <= 0) {
+				playerLost();
+				}
 				// 10. If the dragon's health is less than or equal to 0, the game is over,
 				//     call the dragonLost() method
-
+			if	(dragonhealth <= 0) {
+					dragonLost();
+				}
+			
 			
 				// 11.  Pop up a message that tells us how much health the player and
 				// 		dragon have left.
+		JOptionPane.showMessageDialog(null,"you have " +playerhealth +". the dragon has " +dragonhealth ); 
 
 			
 			// (Bonus: Also display the amount of health that was lost by each in this
@@ -82,15 +87,16 @@ public class DragonFight {
 	}
 
 	static void playerLost() {
-		// 11. Tell the player that they have been defeated by the dragon and have no treasure
+		// 12. Tell the player that they have been defeated by the dragon and have no treasure
+		JOptionPane.showMessageDialog(null,"you lost L bozo");
 
-
+		
 		System.exit(0);   //This code ends the program
 	}
 
 	static void dragonLost() {
-		// 12. Tell the user that the dragon has been defeated and they get a ton of gold!
-
+		// 13. Tell the user that the dragon has been defeated and they get a ton of gold!
+		JOptionPane.showMessageDialog(null,"good job you win");
 		System.exit(0);   //This code ends the program
 	}
 
